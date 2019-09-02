@@ -8,7 +8,7 @@ Welcome to the Plant Monitoring Workshop! Today we will learn some basic electro
 * Double check wiring before connecting power to avoid breaking the components.
 
 ## Preparations
-<img src=documentation/images/hardware.jpg width=400px>
+<img src=documentation/images/hardware.png width=400px>
 
 The main circuit board contains the popular Espressiff ESP32 module. It has built-in wifi and Bluetooth connectivity, and is [compatible](https://github.com/espressif/arduino-esp32) with the popular [Arduino echosystem](https://www.arduino.cc/en/Guide/Introduction). Today however, we are trying out [Micropython](https://micropython.org/), a custom microcontroller firmware that runs a small Python interpreter so that we can program our ESP32 in Python. 
 
@@ -58,7 +58,7 @@ Now we are ready to run a simple test to make sure everything is working.
     ```
     You should see the blue LED turn on and off with each corresponding command.
 1. Download the code examples from this repository:
-  https://github.com/albertskog/... <--TODO
+  https://github.com/albertskog/iot-workshop-plant-monitoring/archive/master.zip
 1. In VSCode, open `1-blink-a-light/main.py` from the zip file that you just downloded.
 4. To run the code without saving it on the board, press `⌘-Shift-R` or `Ctrl-Shift-R`. You should see the blue LED start blinking once per second. If you press `Ctrl-C` in the Pycom Console or reset the board, the blinking stops. This is useful for testing.
 5. To save the code to the board instead, press `⌘-Shift-S` or `Ctrl-Shift-S`. (You can also press `Upload` at the bottom of the window.) It will now resume blinking even if you disconnect the board and plug it back in.
