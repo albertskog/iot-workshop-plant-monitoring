@@ -77,11 +77,16 @@ Now we are ready to run a simple test to make sure everything is working.
 2. Download the code examples from this repository:
   https://github.com/albertskog/iot-workshop-plant-monitoring/archive/master.zip
 
-3. In VSCode, open `1-blink-a-light/main.py` from the zip file that you just downloded.
+3. In the VSCode file explorer, click `Add folder` and open `1-blink-a-light` from the zip file that you just downloded. You should now see `main.py` in the side panel, click to open it.
+
+    <img src=documentation/images/open-folder.png width=500>
+
 
 4. To run the code without saving it on the board, press `⌘-Shift-R` or `Ctrl-Shift-R`. You should see the blue LED start blinking once per second. If you press `Ctrl-C` in the Pycom Console or reset the board, the blinking stops. This is useful for testing.
 
 5. To save the code to the board instead, press `⌘-Shift-S` or `Ctrl-Shift-S`. (You can also press `Upload` at the bottom of the window.) It will now resume blinking even if you disconnect the board and plug it back in.
+
+**Note:** that the Pymakr plugin will get confused if you have multiple folders open in the same VSCode window and upload all of them to the device.
 
 **Note:** you can find all VSCode commands and their shortcuts by pressing `⌘-Shift-P` or `Ctrl-Shift-P`. Type `Pymakr` to show the relevant commands and select with the arrow keys. If you can only remember one hotkey, this should be the one!
 
