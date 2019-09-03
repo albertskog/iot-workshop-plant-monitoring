@@ -22,17 +22,20 @@ The boards have already been prepared with Micropython, so all we need to use it
 	* [Linux](http://www.silabs.com/Support%20Documents/Software/Linux_3.x.x_VCP_Driver_Source.zip)
 	* [Other](http://www.silabs.com/products/mcu/pages/usbtouartbridgevcpdrivers.aspx)
 	
-	*Note:* Mac users may need to go in to `System preferences > Security & Privacy > General` and click `Allow` to let the driver run.
+	**Note:** Mac users may need to go in to `System preferences > Security & Privacy > General` and click `Allow` to let the driver run.
 
 2. Install the Visual Studio Code (VSCode) editor:
   https://code.visualstudio.com/Download
 
-3. Install the Pymakr plugin for VSCode. It is made for Pycom products but works with any Micropython board:
+3. Install NodeJS, it is required by the plugin in the next step:
+  https://nodejs.org/
+
+4. Install the Pymakr plugin for VSCode. It is made for Pycom products but works with any Micropython board:
   https://marketplace.visualstudio.com/items?itemName=pycom.Pymakr
 
-4. Click `All Commands` at the bottom of the window in VSCode and then select `Global Setting` in the menu that appears.
+5. Click `All Commands` at the bottom of the window in VSCode and then select `Global Setting` in the menu that appears. (If you do not see the Pymakr buttons, try restarting VSCode.)
 
-    <img src=documentation/images/global-settings.png>
+    <img src=documentation/images/global-settings.png width=500>
 
     This will open a configuration file. Scroll down to `"autoconnect_comport_manufacturers": [` and add `"Silicon Labs"` to the end of the list. Remember to also add a comma to the end of the second last entry. It should now look like this:
 
@@ -46,17 +49,18 @@ The boards have already been prepared with Micropython, so all we need to use it
       "Silicon Labs"
     ]
     ```
+    Don't forget to save the file after you make the change!
 
-5. Connect your board to a USB port. Be careful to not place the board on metal as the pins may short out and break it.
+6. Connect your board to a USB port. Be careful to not place the board on metal as the pins may short out and break it.
 
-6. In VSCode, if you do not see a terminal in the lower portion of your window, click `Pycom Console` in the status bar.
+7. In VSCode, if you do not see a terminal in the lower portion of your window, click `Pycom Console` in the status bar.
 
-    <img src=documentation/images/pycom-console.png>
+    <img src=documentation/images/pycom-console.png width=500>
 
-7. In the terminal, there should be a Pycom Console with a Python REPL (indicated by the symbols `>>>`). If there is some error about not finding the board, click the trash can symbol <img src=documentation/images/trash.png width=30px>. Pymakr will open another console and should now find the board.
+8. In the terminal, there should be a Pycom Console with a Python REPL (indicated by the symbols `>>>`). If there is some error about not finding the board, click the trash can symbol <img src=documentation/images/trash.png width=30px>. Pymakr will open another console and should now find the board.
 
-    <img src=documentation/images/restart-console.png>
-    <img src=documentation/images/console-open.png>
+    <img src=documentation/images/restart-console.png width=500>
+    <img src=documentation/images/console-open.png width=500>
 
 ## 1. Blink a light
 Now we are ready to run a simple test to make sure everything is working.
@@ -64,15 +68,19 @@ Now we are ready to run a simple test to make sure everything is working.
 1. Write the following in the Pycom Console:
     ```
     >>> from machine import Pin, Signal
-    >>> led = Signal(16, Pin.OUT, inverted=True)
+    >>> led = Signal(16, Pin.OUT, invert=True)
     >>> led.on()
     >>> led.off()
     ```
     You should see the blue LED turn on and off with each corresponding command.
-1. Download the code examples from this repository:
+
+2. Download the code examples from this repository:
   https://github.com/albertskog/iot-workshop-plant-monitoring/archive/master.zip
-1. In VSCode, open `1-blink-a-light/main.py` from the zip file that you just downloded.
+
+3. In VSCode, open `1-blink-a-light/main.py` from the zip file that you just downloded.
+
 4. To run the code without saving it on the board, press `⌘-Shift-R` or `Ctrl-Shift-R`. You should see the blue LED start blinking once per second. If you press `Ctrl-C` in the Pycom Console or reset the board, the blinking stops. This is useful for testing.
+
 5. To save the code to the board instead, press `⌘-Shift-S` or `Ctrl-Shift-S`. (You can also press `Upload` at the bottom of the window.) It will now resume blinking even if you disconnect the board and plug it back in.
 
 **Note:** you can find all VSCode commands and their shortcuts by pressing `⌘-Shift-P` or `Ctrl-Shift-P`. Type `Pymakr` to show the relevant commands and select with the arrow keys. If you can only remember one hotkey, this should be the one!
@@ -119,22 +127,22 @@ The hardware is working, now let's make it talk to the Internet! For today, we w
 
 	You should now end up at you device page with one asset called `counter`. As you can see, your brand new counter has the value `--`. Let's fix that!
 
-* In VSCode, open the folder `3-counter`. The file explorer on the left should show three files; `allthingstalk.py`, `config.py` and `main.py`, 
+4. In VSCode, open the folder `3-counter`. The file explorer on the left should show three files; `allthingstalk.py`, `config.py` and `main.py`, 
 
-* Open `config.py` and replace `XXXXXX` with proper values.
+5. Open `config.py` and replace `XXXXXX` with proper values.
   
-  ```python
-  config = {
-    "wifi_ssid": "XXXXXX",
-    "wifi_password": "XXXXXX",
-    "device_id": "XXXXXX",
-    "device_token": "maker:XXXXXX",
-  }
-  ```
+    ```python
+    config = {
+      "wifi_ssid": "XXXXXX",
+      "wifi_password": "XXXXXX",
+      "device_id": "XXXXXX",
+      "device_token": "maker:XXXXXX",
+    }
+    ```
 
 	Device ID and token can be found in AllThingsTalk. Go to your device page and click `Settings` in the top right corner, then `Authentication`.
 
-* Upload the code to the device, then go to the website to see your data updating! **Note:** it may take up to a minute before the data appears the first time. You can check the status in the Pycom Console.
+6. Upload the code to the device, then go to the website to see your data updating! **Note:** it may take up to a minute before the data appears the first time. You can check the status in the Pycom Console.
 
 **Bonus:** Try setting up boolean, number and string assets in AllThingsTalk and see if you can send in other types of data. All assets must have different names, but they can be updated the same way in the code.
 
@@ -142,7 +150,7 @@ The hardware is working, now let's make it talk to the Internet! For today, we w
 Now that the wifi is working, let's move on to reading data from a sensor. The main board includes both the soil moisture sensor and a DHT22 sensor which can sense temperature and humidity ([datasheet here](https://cdn-shop.adafruit.com/datasheets/Digital+humidity+and+temperature+sensor+AM2302.pdf)).
 
 ### Soil Moisture
-* Paste the following commands in the Pycom Console to read from the moisture sensor:
+1. Paste the following commands in the Pycom Console to read from the moisture sensor:
 
   ```python
   >>> from machine import Pin
@@ -152,7 +160,8 @@ Now that the wifi is working, let's move on to reading data from a sensor. The m
   >>> print(moisture.read())
   ```
   If you send the last command several times, you will see different values depending on if you touch the sensor, or, say, put it in a plant. The value will be in the range 0 - 4095.
-* Replace the counter from the previous example with the soil moisture data. You will need to create a new asset in AllThingsTalk and add in the commands above in the right places.
+
+2. Replace the counter from the previous example with the soil moisture data. You will need to create a new asset in AllThingsTalk and add in the commands above in the right places.
 
   **Hint 1:** For some ideas on how to read the sensor, look in the folder `4-soil-moisture`.
 
@@ -161,7 +170,7 @@ Now that the wifi is working, let's move on to reading data from a sensor. The m
 **Bonus:** Add a graph in AllThingsTalk to show historical values.
 
 ### Temperature and Humidity
-* Paste the following commands in the Pycom Console to read from the DHT11 temperature and humidity sensor:
+1. Paste the following commands in the Pycom Console to read from the DHT11 temperature and humidity sensor:
 
   ```
   >>> from machine import Pin
@@ -173,7 +182,7 @@ Now that the wifi is working, let's move on to reading data from a sensor. The m
 
   If you send the last command several times, you will see different values depending on if you breathe on the sensor, or, say, put it in a window that gets a lot of sun.
 
-* Create two new assets in AllThingsTalk for yout temperature and humidity data add in the commands above in the right places so that all three sensor values are sent to the cloud.
+2. Create two new assets in AllThingsTalk for yout temperature and humidity data add in the commands above in the right places so that all three sensor values are sent to the cloud.
 
   **Hint 1:** For some ideas on how to read the sensor, look in the folder `4-temperature-humidity`.
 
@@ -184,11 +193,12 @@ Now that the wifi is working, let's move on to reading data from a sensor. The m
 ## Choose your own adventure
 You now have some options where to go next:
 1. If you want to continue extending the hardware by connecting an additional light sensor, speaker and a display, continue to step 5, 6 and 7 respectively.
+
 2. If you want to see what you can do with the data, you can play around with making dashboards in AllThingsTalk and setting it up in a way that suits your needs. You can for example set up a rule that sends you a notification when the moisture reaches a certain level. They also have an API that can be used to get the data into, for example, a Jupyter notebook if you are into that.
 
 ## 5. Light sensor
 
-* Disconnect the board from the computer and wire the light sensor like this:
+1. Disconnect the board from the computer and wire the light sensor like this:
   
   | Main board    | Light sensor  |
   | ------------- | ------------- |
@@ -196,7 +206,7 @@ You now have some options where to go next:
   | GND           | G (GND)       |
   | 35            | S (OUT)       |
   
-* Paste the following commands in the Pycom Console to read from the sensor:
+2. Paste the following commands in the Pycom Console to read from the sensor:
 
   ```python
   >>> from machine import Pin
@@ -208,14 +218,14 @@ You now have some options where to go next:
   ```
   **Note:** In this example, the sensor gets power from GPIO pin 35. You could also use the `VCC` pin, but there is only one, and we will need it for the display in the next step! The light sensor draws very little current, so it is fine to power it from a pin like this.
 
-* Add the light sensor data to your device in AllThingsTalk.
+3. Add the light sensor data to your device in AllThingsTalk.
 
   **Hint:** For some ideas on how to read the sensor, look in the folder `5-light-sensor`.
 
 ## 6. Write to the display
 You now have sensing and connectivity in place. Now lets add some outputs and present your data on the LCD display. This kit includes a SD1306 0.96" 128x64 pixel LCD display that can be used to show custom graphics. Again, there is an example availabele.
 
-* Disconnect the USB cable and wire the SD1306 sensor like this:
+1. Disconnect the USB cable and wire the SD1306 sensor like this:
 
   | Main board    | SD1306 display|
   | ------------- | ------------- |
@@ -224,8 +234,9 @@ You now have sensing and connectivity in place. Now lets add some outputs and pr
   | 21            | SCK           |
   | 22            | SDA           |
   
-* Add the folder `6-write-to-display` to your workspace in VSCode and remove any other workshop folders you have open.
-* Press upload and check that you see different graphics demos on the display.
+2. Add the folder `6-write-to-display` to your workspace in VSCode and remove any other workshop folders you have open.
+
+3. Press upload and check that you see different graphics demos on the display.
 
 **Bonus:** Play around with the code and try to make it display something like "20 C" in big letters. Or how about a live moisture graph?
 
