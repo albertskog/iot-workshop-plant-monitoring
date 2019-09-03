@@ -8,7 +8,9 @@ Welcome to the Plant Monitoring Workshop! Today we will learn some basic electro
 * Double check wiring before connecting power to avoid breaking the components.
 
 ## Preparations
-<img src=documentation/images/hardware.png width=400px>
+<img src=documentation/images/hardware.png width=500px>
+
+*Image: [DIY More on Aliexpress](https://www.aliexpress.com/item/32860958750.html)*
 
 The main circuit board contains the popular Espressiff ESP32 module. It has built-in wifi and Bluetooth connectivity, and is [compatible](https://github.com/espressif/arduino-esp32) with the popular [Arduino echosystem](https://www.arduino.cc/en/Guide/Introduction). Today however, we are trying out [Micropython](https://micropython.org/), a custom microcontroller firmware that runs a small Python interpreter so that we can program our ESP32 in Python. 
 
@@ -28,7 +30,12 @@ The boards have already been prepared with Micropython, so all we need to use it
 3. Install the Pymakr plugin for VSCode. It is made for Pycom products but works with any Micropython board:
   https://marketplace.visualstudio.com/items?itemName=pycom.Pymakr
 
-4. Click `All Commands` at the bottom of the window in VSCode and then select `Global Settings` in the menu that appears. This will open a configuration file. Scroll down to `"autoconnect_comport_manufacturers": [` and add `"Silicon Labs"` to the end of the list. Remember to also add a comma to the end of the second last entry. It should now look like this:
+4. Click `All Commands` at the bottom of the window in VSCode and then select `Global Setting` in the menu that appears.
+
+    <img src=documentation/images/global-settings.png>
+
+    This will open a configuration file. Scroll down to `"autoconnect_comport_manufacturers": [` and add `"Silicon Labs"` to the end of the list. Remember to also add a comma to the end of the second last entry. It should now look like this:
+
     ```
     "autoconnect_comport_manufacturers": [
       "Pycom",
@@ -42,9 +49,14 @@ The boards have already been prepared with Micropython, so all we need to use it
 
 5. Connect your board to a USB port. Be careful to not place the board on metal as the pins may short out and break it.
 
-6. In VSCode, if you do not see a terminal at the lower portion of your window, click `View > Terminal`.
+6. In VSCode, if you do not see a terminal in the lower portion of your window, click `Pycom Console` in the status bar.
+
+    <img src=documentation/images/pycom-console.png>
 
 7. In the terminal, there should be a Pycom Console with a Python REPL (indicated by the symbols `>>>`). If there is some error about not finding the board, click the trash can symbol <img src=documentation/images/trash.png width=30px>. Pymakr will open another console and should now find the board.
+
+    <img src=documentation/images/restart-console.png>
+    <img src=documentation/images/console-open.png>
 
 ## 1. Blink a light
 Now we are ready to run a simple test to make sure everything is working.
