@@ -42,36 +42,42 @@ def connect_wifi():
             pass
     print("Network config:", wifi.ifconfig())
 
+def read_sensors():
+    sensor_data = {}
+
+    # Read the moisture sensor and convert into percent
+    sensor_data["moisture"] = int(100-(moisture.read()/40.96))
+
+    # Read the DHT sensor
+    temperature_humidity.measure()
+    sensor_data["temperature"] = temperature_humidity.temperature()
+    sensor_data["humidity"] = temperature_humidity.humidity()
+
+    # Read light sensor
+    sensor_data["light"] = int(light_sensor.read()/40.96)
+
+    return sensor_data
+
 while True:
     if wifi.isconnected():
+        sensor_data = read_sensors()
+        cloud.set_multiple(sensor_data)
+
         display.fill(black)
 
-        # Read the moisture sensor and convert into percent
-        moisture_percent = int(100-(moisture.read()/40.96))
-        cloud.set_asset_state("moisture", moisture_percent)
-        message = "Moisture: {}%".format(moisture_percent)
+        message = "Moisture: {}%".format(sensor_data["moisture"])
         print(message)
         display.text(message, 10, 5)
-
-        # Read the DHT sensor
-        temperature_humidity.measure()
-
-        temperature = temperature_humidity.temperature()
-        cloud.set_asset_state("temperature", temperature)
-        message = "Temp: {}C".format(temperature)
+        
+        message = "Temp: {}C".format(sensor_data["temperature"])
         print(message)
         display.text(message, 10, 20)
 
-        humidity = temperature_humidity.humidity()
-        cloud.set_asset_state("humidity", humidity)
-        message = "Humidity: {}%".format(humidity)
+        message = "Humidity: {}%".format(sensor_data["humidity"])
         print(message)
         display.text(message, 10, 35)
 
-        # Read light sensor
-        light_percent = int(light_sensor.read()/40.96)
-        cloud.set_asset_state("light", light_percent)
-        message = "Light: {}".format(light_percent)
+        message = "Light: {}%".format(sensor_data["light"])
         print(message)
         display.text(message, 10, 50)
 

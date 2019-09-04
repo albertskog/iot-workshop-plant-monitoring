@@ -8,10 +8,14 @@ class AllThingsTalkDevice:
 
     def set_asset_state(self, asset_name, asset_state):
         data = {asset_name:{"value":asset_state}}
-        request = urequests.put(self.url, headers=self.headers, json=data)
-        request.close()
+        self.put_data(data)
 
     def set_multiple(self, asset_states):
         data = {}
         for key in asset_states:
-            asset_states[key] = {"value":asset_states[key]}
+            data[key] = {"value":asset_states[key]}
+        self.put_data(data)
+
+    def put_data(self, data):
+        request = urequests.put(self.url, headers=self.headers, json=data)
+        request.close()
