@@ -1,5 +1,8 @@
 # IoT Plant Monitoring Workshop
+<img src=documentation/images/kit.jpg>
 Welcome to the Plant Monitoring Workshop! Today we will learn some basic electronics and create a wifi-based plant monitoring device witch measures soil moisture and also ambient temperature, humidity and light.
+
+If you want another kit or need some spare parts, there are links to all the components in the [shopping list](documentation/shopping-list.md).
 
 ## Electric Safety
 * The kit used in this workshop operates at 5 Volts and below. This means there is no risk for electric shocks, however incorrect use may still break the components themselves.
