@@ -177,7 +177,7 @@ Now that the wifi is working, let's move on to reading data from a sensor. The m
 ### Temperature and Humidity
 1. Paste the following commands in the Pycom Console to read from the DHT11 temperature and humidity sensor:
 
-  ```
+  ```python
   >>> from machine import Pin
   >>> from dht import DHT11
   >>> sensor = DHT11(Pin(22))
@@ -205,23 +205,23 @@ You now have some options where to go next:
 
 1. Disconnect the board from the computer and wire the light sensor like this:
   
-  | Main board    | Light sensor  |
-  | ------------- | ------------- |
-  | 32            | V (VCC)       |
-  | GND           | G (GND)       |
-  | 35            | S (OUT)       |
+    | Main board    | Light sensor  |
+    | ------------- | ------------- |
+    | 32            | V (VCC)       |
+    | GND           | G (GND)       |
+    | 35            | S (OUT)       |
   
 2. Paste the following commands in the Pycom Console to read from the sensor:
 
-  ```python
-  >>> from machine import Pin
-  >>> from machine import ADC
-  >>> light_sensor_power = Pin(32, Pin.OUT)
-  >>> light_sensor = ADC(Pin(35))
-  >>> light_sensor.atten(ADC.ATTN_11DB)
-  >>> print(light_sensor.read())
-  ```
-  **Note:** In this example, the sensor gets power from GPIO pin 35. You could also use the `VCC` pin, but there is only one, and we will need it for the display in the next step! The light sensor draws very little current, so it is fine to power it from a pin like this.
+    ```python
+    >>> from machine import Pin
+    >>> from machine import ADC
+    >>> light_sensor_power = Pin(32, Pin.OUT)
+    >>> light_sensor = ADC(Pin(35))
+    >>> light_sensor.atten(ADC.ATTN_11DB)
+    >>> print(light_sensor.read())
+    ```
+    **Note:** In this example, the sensor gets power from GPIO pin 35. You could also use the `VCC` pin, but there is only one, and we will need it for the display in the next step! The light sensor draws very little current, so it is fine to power it from a pin like this.
 
 3. Add the light sensor data to your device in AllThingsTalk.
 
@@ -232,18 +232,39 @@ You now have sensing and connectivity in place. Now lets add some outputs and pr
 
 1. Disconnect the USB cable and wire the SD1306 sensor like this:
 
-  | Main board    | SD1306 display|
-  | ------------- | ------------- |
-  | VCC           | VDD           |
-  | GND           | GND           |
-  | 21            | SCK           |
-  | 22            | SDA           |
+    | Main board    | SD1306 display|
+    | ------------- | ------------- |
+    | VCC           | VDD           |
+    | GND           | GND           |
+    | 21            | SCK           |
+    | 22            | SDA           |
   
 2. Add the folder `6-write-to-display` to your workspace in VSCode and remove any other workshop folders you have open.
 
 3. Press upload and check that you see different graphics demos on the display.
 
-**Bonus:** Play around with the code and try to make it display something like "20 C" in big letters. Or how about a live moisture graph?
+4. Combine the example with your previous code by copying `ssd1306.py` into your folder, then look at the code in `main.py` to see how you can use it. The easiest way is to use `display.text()` to print your sensor values on four separate lines.
+
+**Bonus:** Play around with the code and try to make it display the data in a way you like. How about a live moisture graph?
+
+## 7. Play sound
+There is also anouther type of output in the kit - a speaker! It can for example be used to notify the user if the moisture level gets too low.
+
+1. Disconnect the USB cable and wire up the speaker module like this:
+
+    | Main board    | Speaker module|
+    | ------------- | ------------- |
+    | 5V            | VDD           |
+    | GND           | GND           |
+    | 25            | SIG           |
+
+2. Add the folder `7-play-sound` to your workspace in VSCode and remove any other workshop folders you have open.
+
+3. Press upload and check that you hear a sound demo play once.
+
+4. Combine the example with your previous code by copying `speaker.py` into your folder, then look at the code in `main.py` to see how you can use it. One simple way would be to play a short tone every time the moisture sensor reads a value below a certain level.
+
+**Bonus:** Play around with the code and try to make a good warning sound that is not too annoying to your future self (or your fellow workshop participants).
 
 ## 8. Combine Everything
 That's it, you are now a certified IoT hardware maker! The final step of this workshop, if you have not done so already, is to combine all the examples so that the board can:
@@ -260,4 +281,8 @@ You can, for example, start by saving a copy of the counter example from step 3,
 If you want some hints, there is also an example of how you might do this in `8-combine-everything`. Just put in your wifi settings, `device_id` and `device_token` in `config.py` like before and upload.
 
 ### Hints for further improvement
-The provided example works fine in most cases, but does have some deliberate limitations for you to work on. For example the display is not fully utilised.
+The provided example works fine in most cases, but does have some deliberate limitations for you to work on. For example;
+
+* The display printout could look better.
+* The code that sends data to AllThingsTalk does not check for errors.
+* There also is no code for receiving data from cloud. You could for example set a threshold level in cloud and send it to the device.
