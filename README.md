@@ -33,7 +33,7 @@ The boards have already been prepared with Micropython, so all we need to use it
 3. Install NodeJS, it is required by the plugin in the next step:
   https://nodejs.org/
 
-4. Install the Pymakr plugin for VSCode. It is made for Pycom products but works with any Micropython board:
+4. Install the Pymakr plugin for VSCode. It is made for [Pycom](https://pycom.io/) products but works with any Micropython board:
   https://marketplace.visualstudio.com/items?itemName=pycom.Pymakr
 
 5. Click `All Commands` at the bottom of the window in VSCode and then select `Global Setting` in the menu that appears. (If you do not see the Pymakr buttons, try restarting VSCode.)
