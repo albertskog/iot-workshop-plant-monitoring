@@ -1,5 +1,5 @@
 # IoT Plant Monitoring Workshop
-<img src=documentation/images/kit.jpg>
+<img src=documentation/images/kit.jpg width=600>
 Welcome to the Plant Monitoring Workshop! Today we will learn some basic electronics and create a wifi-based plant monitoring device witch measures soil moisture and also ambient temperature, humidity and light.
 
 If you want another kit or need some spare parts, there are links to all the components in the [shopping list](documentation/shopping-list.md).
@@ -11,7 +11,7 @@ If you want another kit or need some spare parts, there are links to all the com
 * Double check wiring before connecting power to avoid breaking the components.
 
 ## Preparations
-<img src=documentation/images/hardware.png width=500px>
+<img src=documentation/images/hardware.png width=500>
 
 *Image: [DIY More on Aliexpress](https://www.aliexpress.com/item/32860958750.html)*
 
@@ -160,41 +160,41 @@ Now that the wifi is working, let's move on to reading data from a sensor. The m
 ### Soil Moisture
 1. Paste the following commands in the Pycom Console to read from the moisture sensor:
 
-  ```python
-  >>> from machine import Pin
-  >>> from machine import ADC
-  >>> moisture = ADC(Pin(32))
-  >>> moisture.atten(ADC.ATTN_11DB)
-  >>> print(moisture.read())
-  ```
-  If you send the last command several times, you will see different values depending on if you touch the sensor, or, say, put it in a plant. The value will be in the range 0 - 4095.
+    ```python
+    >>> from machine import Pin
+    >>> from machine import ADC
+    >>> moisture = ADC(Pin(32))
+    >>> moisture.atten(ADC.ATTN_11DB)
+    >>> print(moisture.read())
+    ```
+    If you send the last command several times, you will see different values depending on if you touch the sensor, or, say, put it in a plant. The value will be in the range 0 - 4095.
 
 2. Replace the counter from the previous example with the soil moisture data. You will need to create a new asset in AllThingsTalk and add in the commands above in the right places.
 
-  **Hint 1:** For some ideas on how to read the sensor, look in the folder `4-soil-moisture`.
+    **Hint 1:** For some ideas on how to read the sensor, look in the folder `4-soil-moisture`.
 
-  **Hint 2:** For a full working exampe, look in the folder `4-read-sensors`
+    **Hint 2:** For a full working exampe, look in the folder `4-read-sensors`
 
 **Bonus:** Add a graph in AllThingsTalk to show historical values.
 
 ### Temperature and Humidity
 1. Paste the following commands in the Pycom Console to read from the DHT11 temperature and humidity sensor:
 
-  ```python
-  >>> from machine import Pin
-  >>> from dht import DHT11
-  >>> sensor = DHT11(Pin(22))
-  >>> sensor.measure()
-  >>> print("Temperature: {}  Humidity: {}".format(sensor.temperature(), sensor.humidity()))
-  ```
+    ```python
+    >>> from machine import Pin
+    >>> from dht import DHT11
+    >>> sensor = DHT11(Pin(22))
+    >>> sensor.measure()
+    >>> print("Temperature: {}  Humidity: {}".format(sensor.temperature(), sensor.humidity()))
+    ```
 
-  If you send the last command several times, you will see different values depending on if you breathe on the sensor, or, say, put it in a window that gets a lot of sun.
+    If you send the last command several times, you will see different values depending on if you breathe on the sensor, or, say, put it in a window that gets a lot of sun.
 
 2. Create two new assets in AllThingsTalk for yout temperature and humidity data add in the commands above in the right places so that all three sensor values are sent to the cloud.
 
-  **Hint 1:** For some ideas on how to read the sensor, look in the folder `4-temperature-humidity`.
+    **Hint 1:** For some ideas on how to read the sensor, look in the folder `4-temperature-humidity`.
 
-  **Hint 2:** For a full working exampe, look in the folder `4-read-sensors`
+    **Hint 2:** For a full working exampe, look in the folder `4-read-sensors`
 
 **Bonus:** Add a temperature gauge in AllThingsTalk to show the current temperature.
 
@@ -202,7 +202,7 @@ Now that the wifi is working, let's move on to reading data from a sensor. The m
 You now have some options where to go next:
 1. If you want to continue extending the hardware by connecting an additional light sensor, speaker and a display, continue to step 5, 6 and 7 respectively.
 
-2. If you want to see what you can do with the data, you can play around with making dashboards in AllThingsTalk and setting it up in a way that suits your needs. You can for example set up a rule that sends you a notification when the moisture reaches a certain level. They also have an API that can be used to get the data into, for example, a Jupyter notebook if you are into that.
+2. If you want to see what you can do with the data, you can play around with making dashboards in AllThingsTalk and setting it up in a way that suits your needs. You can for example set up a rule that sends you a notification when the moisture reaches a certain level. They also have an [API](https://docs.allthingstalk.com/developers/api/get-started/) that can be used to get the data into, for example, a Jupyter notebook if you are into that.
 
 ## 5. Light sensor
 
