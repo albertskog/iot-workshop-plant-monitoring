@@ -2,7 +2,7 @@ from machine import Pin
 from time import sleep
 from speaker import Speaker
 
-speaker = Speaker(Pin(25))
+speaker = Speaker(Pin(26))
 
 speaker.play_tone(500)
 

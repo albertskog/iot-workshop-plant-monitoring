@@ -150,7 +150,9 @@ The hardware is working, now let's make it talk to the Internet! For today, we w
 
 	Device ID and token can be found in AllThingsTalk. Go to your device page and click `Settings` in the top right corner, then `Authentication`.
 
-6. Upload the code to the device, then go to the website to see your data updating! **Note:** it may take up to a minute before the data appears the first time. You can check the status in the Pycom Console.
+6. Upload the code to the device, then go to the website to see your data updating!
+  
+    **Note:** it may take up to a minute before the data appears the first time. You can check the status in the Pycom Console.
 
 **Bonus:** Try setting up boolean, number and string assets in AllThingsTalk and see if you can send in other types of data. All assets must have different names, but they can be updated the same way in the code.
 
@@ -228,21 +230,22 @@ You now have some options where to go next:
     ```
     **Note:** In this example, the sensor gets power from GPIO pin 35. You could also use the `VCC` pin, but there is only one, and we will need it for the display in the next step! The light sensor draws very little current, so it is fine to power it from a pin like this.
 
-3. Add the light sensor data to your device in AllThingsTalk.
+3. Add the light sensor data to your device in AllThingsTalk by combining this example with your code from before.
 
   **Hint:** For some ideas on how to read the sensor, look in the folder `5-light-sensor`.
 
 ## 6. Write to the display
-You now have sensing and connectivity in place. Now lets add some outputs and present your data on the LCD display. This kit includes a SD1306 0.96" 128x64 pixel LCD display that can be used to show custom graphics. Again, there is an example availabele.
+You now have sensing and connectivity in place. Now lets add some outputs by presenting your data on the LCD display. This kit includes a SD1306 0.96" 128x64 pixel LCD display that can be used to show custom graphics. Again, there is an example availabele.
 
-1. Disconnect the USB cable and wire the SD1306 sensor like this:
+1. Disconnect the USB cable and wire the SD1306 sensor like this (no need to remove the light sensor though):
 
     | Main board    | SD1306 display|
     | ------------- | ------------- |
     | VCC           | VDD           |
     | GND           | GND           |
-    | 21            | SCK           |
-    | 22            | SDA           |
+    | 21            | SDA           |
+    | 22            | SCL           |
+
     <img src=documentation/images/display.jpg width=600>
 
 2. Add the folder `6-write-to-display` to your workspace in VSCode and remove any other workshop folders you have open.
@@ -256,13 +259,13 @@ You now have sensing and connectivity in place. Now lets add some outputs and pr
 ## 7. Play sound
 There is also anouther type of output in the kit - a speaker! It can for example be used to notify the user if the moisture level gets too low.
 
-1. Disconnect the USB cable and wire up the speaker module as follows. You will need to use the long cable that has a white connector in one end and connect to the board using three of the jumper wires. Sorry, the store did not have the right cable ¯\\\_(ツ)\_/¯
+1. Disconnect the USB cable and wire up the speaker module as follows (no need to remove the light sensor or the display though). You will need to use the long cable that has a white connector in one end and connect to the board using three of the jumper wires. Sorry, the store did not have the right cable ¯\\\_(ツ)\_/¯.
 
-    | Main board    | Speaker module|
-    | ------------- | ------------- |
-    | 5V            | VDD           |
-    | GND           | GND           |
-    | 25            | SIG           |
+    | Main board    | Speaker cable | Speaker module|
+    | ------------- | ------------- | ------------- |
+    | 5V            | Red           | VDD           |
+    | GND           | Black         | GND           |
+    | 26            | Yellow        | SIG           |
 
     <img src=documentation/images/speaker.jpg width=600>
 
