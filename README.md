@@ -213,6 +213,8 @@ You now have some options where to go next:
     | 32            | V (VCC)       |
     | GND           | G (GND)       |
     | 35            | S (OUT)       |
+
+    <img src=documentation/images/light-sensor.jpg width=600>
   
 2. Paste the following commands in the Pycom Console to read from the sensor:
 
@@ -241,7 +243,8 @@ You now have sensing and connectivity in place. Now lets add some outputs and pr
     | GND           | GND           |
     | 21            | SCK           |
     | 22            | SDA           |
-  
+    <img src=documentation/images/display.jpg width=600>
+
 2. Add the folder `6-write-to-display` to your workspace in VSCode and remove any other workshop folders you have open.
 
 3. Press upload and check that you see different graphics demos on the display.
@@ -253,13 +256,15 @@ You now have sensing and connectivity in place. Now lets add some outputs and pr
 ## 7. Play sound
 There is also anouther type of output in the kit - a speaker! It can for example be used to notify the user if the moisture level gets too low.
 
-1. Disconnect the USB cable and wire up the speaker module like this:
+1. Disconnect the USB cable and wire up the speaker module as follows. You will need to use the long cable that has a white connector in one end and connect to the board using three of the jumper wires. Sorry, the store did not have the right cable ¯\\\_(ツ)\_/¯
 
     | Main board    | Speaker module|
     | ------------- | ------------- |
     | 5V            | VDD           |
     | GND           | GND           |
     | 25            | SIG           |
+
+    <img src=documentation/images/speaker.jpg width=600>
 
 2. Add the folder `7-play-sound` to your workspace in VSCode and remove any other workshop folders you have open.
 
