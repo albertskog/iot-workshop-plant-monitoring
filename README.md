@@ -129,11 +129,16 @@ The hardware is working, now let's make it talk to the Internet! For today, we w
 
 1. Go to https://maker.allthingstalk.com and sign up for an account.
 
-2. Log in, press `Connect a device` and select `Your own device`.
+2. Log in, press `Connect a device` and select `Your own device`. Name your device whatever you like.
+
+    <img src=documentation/images/first-page.png width=500>
+    <img src=documentation/images/add-device.png width=500>
 
 3. Each device can have many different sensors, or "assets". Add a new asset to your device by clicking `Create asset`. Call the asset `counter` (important!) and set the type to `Integer`.
 
-	You should now end up at you device page with one asset called `counter`. As you can see, your brand new counter has the value `--`. Let's fix that!
+    <img src=documentation/images/add-asset.png width=500>
+
+	You should now end up at you device page with one asset called `counter`. As you can see, your brand new counter has no value. Let's fix that!
 
 4. In VSCode, open the folder `3-counter`. The file explorer on the left should show three files; `allthingstalk.py`, `config.py` and `main.py`, 
 
@@ -149,6 +154,10 @@ The hardware is working, now let's make it talk to the Internet! For today, we w
     ```
 
 	Device ID and token can be found in AllThingsTalk. Go to your device page and click `Settings` in the top right corner, then `Authentication`.
+
+    <img src=documentation/images/settings-button.png width=500>
+    <img src=documentation/images/settings.png width=500>
+    <img src=documentation/images/authentication.png width=500>
 
 6. Upload the code to the device, then go to the website to see your data updating!
   
