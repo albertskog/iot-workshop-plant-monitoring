@@ -134,7 +134,7 @@ The hardware is working, now let's make it talk to the Internet! For today, we w
     <img src=documentation/images/first-page.png width=500>
     <img src=documentation/images/add-device.png width=500>
 
-3. Each device can have many different sensors, or "assets". Add a new asset to your device by clicking `Create asset`. Call the asset `counter` (important!) and set the type to `Integer`.
+3. Each device can have many different sensors, or "assets". Add a new asset to your device by clicking `Create asset`. Call the asset `counter` and set the type to `Integer`. If you call your asset something else, you will need to change the code in the next step.
 
     <img src=documentation/images/add-asset.png width=500>
 
