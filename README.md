@@ -213,7 +213,7 @@ Now that the wifi is working, let's move on to reading data from a sensor. The m
 You now have some options where to go next:
 1. If you want to continue extending the hardware by connecting an additional light sensor, speaker and a display, continue to step 5, 6 and 7 respectively.
 
-2. If you want to see what you can do with the data, you can play around with making dashboards in AllThingsTalk and setting it up in a way that suits your needs. You can for example set up a rule that sends you a notification when the moisture reaches a certain level. They also have an [API](https://docs.allthingstalk.com/developers/api/get-started/) that can be used to get the data into, for example, a Jupyter notebook if you are into that.
+2. If you want to see what you can do with the data, you can play around with making dashboards in AllThingsTalk and setting it up in a way that suits your needs. You can for example set up a rule that sends you a notification via email or to the AllThingsTalk app on your phone when the moisture reaches a certain level. They also have an [API](https://docs.allthingstalk.com/developers/api/get-started/) that can be used to get the data into, for example, a Jupyter notebook if you are into that.
 
 ## 5. Light sensor
 
