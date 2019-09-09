@@ -7,10 +7,12 @@ import network
 
 from allthingstalk import AllThingsTalkDevice
 from ssd1306 import SSD1306_I2C
+from speaker import Speaker
 from config import config
 
 moisture = ADC(Pin(32))
 moisture.atten(ADC.ATTN_11DB)
+moisture_alarm_level = 10
 
 temperature_humidity = DHT11(Pin(22))
 
@@ -24,6 +26,8 @@ i2c = I2C(scl = Pin(22), sda = Pin(21))
 display = SSD1306_I2C(128, 64, i2c)
 black = 0
 white = 1
+
+speaker = Speaker(Pin(26))
 
 cloud = AllThingsTalkDevice(config["device_id"], config["device_token"])
 
@@ -82,6 +86,9 @@ while True:
         display.text(message, 10, 50)
 
         display.show()
+
+        if sensor_data["moisture"] < moisture_alarm_level:
+            speaker.play_tone(500)
 
         sleep(5)
     else:
