@@ -1,6 +1,6 @@
 from machine import Pin
 from machine import ADC
-from dht import DHT
+from dht import DHT11
 from time import sleep
 import network
 

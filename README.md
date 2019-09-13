@@ -65,6 +65,8 @@ The boards have already been prepared with Micropython, so all we need to use it
     <img src=documentation/images/restart-console.png width=500>
     <img src=documentation/images/console-open.png width=500>
 
+**Note:** it seems installing Pymakr has some problems and installing it does not work on some combinations of Windows and VSCode versions. If you see error messages about "serialport module", you can try to use the [Atom](https://atom.io/) text editor instead, there is a Pymakr plugin for that as well.
+
 ## 1. Blink a light
 Now we are ready to run a simple test to make sure everything is working.
 
@@ -94,7 +96,6 @@ Now we are ready to run a simple test to make sure everything is working.
 **Note:** you can find all VSCode commands and their shortcuts by pressing `⌘-Shift-P` or `Ctrl-Shift-P`. Type `Pymakr` to show the relevant commands and select with the arrow keys. If you can only remember one hotkey, this should be the one!
 
 **Bonus:** try changing the delays and adding in more lines to create other blinking patterns.
-
 
 ## 2. Print a message
 It is sometimes helpful to print out a message to yourself to figure out what the code is doing. Try out this program and see if you understand how it works. Create a new file in VSCode, paste the code below and save it as `main.py` inside a new folder, then press Upload. After uploading, have a look at the output in the Pycom Console.
@@ -233,6 +234,7 @@ You now have some options where to go next:
     >>> from machine import Pin
     >>> from machine import ADC
     >>> light_sensor_power = Pin(32, Pin.OUT)
+    >>> light_sensor_power.on()
     >>> light_sensor = ADC(Pin(35))
     >>> light_sensor.atten(ADC.ATTN_11DB)
     >>> print(light_sensor.read())
